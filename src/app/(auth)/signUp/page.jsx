@@ -104,7 +104,7 @@ function SignUp() {
                 className="mr-2 form-checkbox h-5 w-5 text-orange-600 focus:ring-orange-500"
                 required
               />
-              <span className="text-sm text-white">
+              <span className="text-sm text-black">
                 I agree to the 
                 <a href="#" className="text-[#ff9900] hover:underline mx-1">Terms of Service</a>
                 and
