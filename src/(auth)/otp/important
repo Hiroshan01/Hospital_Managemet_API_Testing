@@ -1,0 +1,3 @@
+git add . → Adds all modified and new files to staging.
+git commit -m "message" → Saves changes with a commit message.
+git push origin feature → Pushes changes to the remote repository.
