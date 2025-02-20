@@ -69,13 +69,13 @@ function SignUp() {
 
         {/* Right Side Form */}
         <div className="bg-white flex flex-col justify-center rounded-[20px] items-center w-full lg:w-[70%] p-6 lg:p-8">
-          <h2 className="text-2xl font-bold mb-4 text-center">Create Account</h2>
+          <h2 className="text-2xl font-bold mb-4 text-center text-black">Create Account</h2>
           <form className="w-full max-w-xs sm:max-w-sm md:max-w-md" onSubmit={handleSignUp}>
             <input
               type="text"
               name="name"
               placeholder="User Name"
-              className="w-full p-2 mb-3 border-b-2 border-gray-300 focus:border-[#ff9900] focus:outline-none"
+              className="w-full p-2 mb-3 border-b-2 border-gray-300 focus:border-[#ff9900] focus:outline-none text-black"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -84,7 +84,7 @@ function SignUp() {
               type="email"
               name="email"
               placeholder="Email"
-              className="w-full p-2 mb-3 border-b-2 border-gray-300 focus:border-[#ff9900] focus:outline-none"
+              className="w-full p-2 mb-3 border-b-2 border-gray-300 focus:border-[#ff9900] focus:outline-none text-black"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -93,7 +93,7 @@ function SignUp() {
               type="text"
               name="mobile"
               placeholder="Mobile Number"
-              className="w-full p-2 mb-3 border-b-2 border-gray-300 focus:border-[#ff9900] focus:outline-none"
+              className="w-full p-2 mb-3 border-b-2 border-gray-300 focus:border-[#ff9900] focus:outline-none text-black"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
               required
@@ -104,7 +104,7 @@ function SignUp() {
                 className="mr-2 form-checkbox h-5 w-5 text-orange-600 focus:ring-orange-500"
                 required
               />
-              <span className="text-sm">
+              <span className="text-sm text-white">
                 I agree to the 
                 <a href="#" className="text-[#ff9900] hover:underline mx-1">Terms of Service</a>
                 and
@@ -131,7 +131,7 @@ function SignUp() {
               <button className="p-2 rounded-full border border-black bg-white text-blue-600">
                 <FaFacebookF size={18} />
               </button>
-              <button className="p-2 rounded-full border border-black bg-white text-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 ">
+              <button className="p-2 rounded-full border border-black bg-white text- via-pink-500">
                 <FaInstagram size={18} />
               </button>
               <button className="p-2 rounded-full border border-black bg-white text-blue-600 ">
