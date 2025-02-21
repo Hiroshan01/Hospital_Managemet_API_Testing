@@ -3,16 +3,26 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import img1 from '../../../../public/signIn.jpg';
-import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { LiaLinkedinIn } from 'react-icons/lia';
-import authService from "../../services/authService";
+import authService from "../../services/authService"
+import { signIn } from "next-auth/react";
 
-function Page() {
+
+function SignIn() {
   const [mobile, setMobile] = useState("");
   const [otp, setOtp] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
+
+  const handleGoogleSignIn = async () => {
+      try {
+        await signIn("google", { callbackUrl: "/" });
+      } catch (error) {
+        console.error("Error signing in with Google:", error);
+      }
+    };
+
 
   const validateMobile = (mobile) => {
     const mobileRegex = /^(?:\+94|0)?7\d{8}$/; //mobile validetion
@@ -33,8 +43,8 @@ function Page() {
 
 
     try {
-      const response = await authService.signInWithOtp(mobile, otp);
-      localStorage.setItem("token", response.token); // Store JWT token
+      const response = await authService.signInWithOTP(mobile, otp);
+      localStorage.setItem("token", response.token); 
       alert("Sign-in successful!");
       router.push("/"); 
     } catch (err) {
@@ -63,8 +73,8 @@ function Page() {
               onChange={(e) => setMobile(e.target.value)}
               required
             />
-            <input
-              type="otp"
+              <input
+              type="text"
               name="otp"
               placeholder="OTP Code"
               className="w-full p-2 mb-3 border-b-2 border-gray-300 focus:border-[#ff9900] focus:outline-none mt-6"
@@ -78,30 +88,22 @@ function Page() {
             {error && <p className="text-[#ff9900] text-sm mt-5 ml-2">{error}</p>}
           </form>
 
-          {/* Social Sign In */}
+       
           <div className="flex flex-col items-center w-full mt-6">
             <div className="flex items-center w-full max-w-sm">
               <div className="flex-grow border-t border-gray-400"></div>
-              <span className="px-2 text-gray-400">Or sign up with</span>
+              <span className="px-2 text-gray-400">Or Sign In With</span>
               <div className="flex-grow border-t border-gray-400"></div>
             </div>
           </div>
           <div className="flex gap-3 mt-4 flex-wrap justify-center">
-            <button className="p-2 rounded-full border border-black">
-              <FcGoogle size={18} />
-            </button>
-            <button className="p-2 rounded-full border border-black bg-white text-blue-600">
-              <FaFacebookF size={18} />
-            </button>
-            <button className="p-2 rounded-full border border-black bg-white text-gradient-to-r from-purple-500 via-pink-500 to-yellow-500">
-              <FaInstagram size={18} />
-            </button>
-            <button className="p-2 rounded-full border border-black bg-white text-blue-600">
-              <FaTwitter size={18} />
-            </button>
-            <button className="p-2 rounded-full border border-black bg-white text-blue-600 hover:bg-blue-900">
-              <LiaLinkedinIn size={18} />
-            </button>
+             <button 
+                className="flex items-center justify-center p-2 rounded-full border border-black bg-white hover:bg-gray-100 transition duration-200"
+                onClick={handleGoogleSignIn}
+                >
+                <FcGoogle size={18} className="mr-2" />
+                <span className="text-sm font-semibold">Continue with Google</span>
+                </button>
           </div>
         </div>
       </div>
@@ -109,4 +111,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default SignIn;
